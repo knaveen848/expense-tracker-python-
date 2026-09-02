@@ -1,0 +1,112 @@
+print('='*60)
+print('         STUDENT MANAGMENT SYSTEM')
+print('='*60)
+students=[ ]
+while True:
+    print('1.add student')
+    print('2.view students')
+    print('3.search student')
+    print('4.update student')
+    print('5.delet student')
+    print('6.calculate average')
+    print('7.exit')
+    choise=int(input('enter your choise :'))
+    
+    if choise==1:
+        name=input('enter student name:')
+        while not name.isalpha():
+            print('name must contain only letters')
+            
+            print=input('enter student name again:')
+            break
+        roll_no=input('enter roll number:')
+        marks=float(input('enter marks :'))
+        
+        student={
+        'name' :name,
+        'roll_num' :roll_no,
+        'marks' :marks }
+        students.append(student)
+        
+        print('student added succesfully')
+        
+        
+    elif choise==2:
+    	if len(students)==0:
+    		print('no student found')
+    	else:
+    		print('======= student list =======')
+    		
+    		for student in students:
+    			print('name:',student['name'])
+    			
+    			print('roll_no:',student['roll_num'])
+    			
+    			print('marks:',student['marks'])
+    			
+    			print('-------------------‐-------------')
+    	
+    elif choise==3:
+    	search_roll=input('enter roll number to search:')
+    	
+    	found=False
+    	
+    	for student in students:
+    		print('student found')
+    		
+    		print('name:',student['name'])
+    		
+    		print('roll no:', student[ 'roll_num'])
+    		
+    		print('marks :', student['marks'])
+    		
+    		found=True
+    		break
+    	if not found:
+    		print('student not found')
+    	
+    elif choise==4:
+    	search_roll=input('enter roll number to update :')
+    	found=False
+    	for student in students:
+    		if student ['roll_num']==search_roll:
+    		    print('student found')
+    		    new_name=input('enter new name :')
+    		    new_marks=input('enter new marks :')
+    		    student['name'] ==new_name
+    		    student['marks']==new_marks
+    		    print('student updated succesfully!')
+    		    found=True
+    		    break
+    		if not found:
+    			print('student not found')
+    	
+    elif choise==5:
+    	search_roll=input('enter roll number to delete :')
+    	found=False
+    	for student in students:
+    		if student['roll_num']==search_roll :
+    			students.remove(student)
+    			print('student deleted succesfully')
+    			found=True
+    			break
+    		if not found:
+    			print('student not found.')
+    
+    	
+    elif choise==6:
+    	if len(students)==0:
+    		print('student not found.')
+    	else:
+    		total=0
+    		for student in students :
+    			total=total +student['marks']
+    			average=total/len(students)
+    			print('average marks :',average)
+    	
+    elif choise==7:
+    	print('thank you!')
+    	break
+    
+    else:
+    	print('invalid choise')
