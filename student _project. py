@@ -1,0 +1,80 @@
+import pandas as pd
+data={
+"students":["naveen","rahul","abhi",],
+"python":[50,40,30],
+"maths":[70,60,40],
+"physices":[80,60,50] }
+x=pd.DataFrame(data)
+x["average"]=x[["maths","python","physices"]].mean(axis=1)
+print(x)
+print( )
+y=x.loc[x["average"].idxmax( )]
+print("highest average student :")
+print(y)
+print( )
+z=x.loc[x["average"].idxmin( )]
+print("lowest average student :")
+print(z)
+print( )
+r=x["result"]=x["average"].apply( lambda x :"pass" if x>=50 else "fail")
+print( "result of average students :")
+print(r)
+print( )
+p=x["average"].mean( )
+print("average of class :",p.round(2))
+print( )
+print("overall highest marks in each subject :")
+print( )
+print(" highest marks in python :",x["python"].max( ))
+print("highest marks in maths :",x["maths"].max( ))
+print("highest marks in physices :",x["physices"].max() )
+print( )
+print("overall lowest marks in each subject :")
+print( )
+print("lowest marks in python :",x["python"].min( ))
+print("lowest marks in maths :",x["maths"].min( ))
+print("lowest marks in physices:",x["physices"].min( ))
+print("lowest marks in python :",x["python"].min( ))
+print( )
+def grade(average):
+	if average>=80:
+		return "A"
+	elif average>=70:
+		return "B"
+	elif average>=60:
+		return "C"
+	else :
+	    return "D"
+x["grade"]=x["average"].apply(grade)
+print("Grades of students : ")
+print( )
+print(x)
+x["rank"]=x["average"].rank(ascending =False).astype(int)
+print( )
+print("Ranks of the student :")
+print(x)
+name=input("enter student name :")
+student=x[x["students"].str.lower( )==name.lower( )]
+print( )
+print("Search student name :")
+print( )
+print(student)
+print()
+x["total"]=x["physices"]+x["maths"]+x["python"]
+print("total marks of all subjects : ")
+print( )
+print(x)
+print( )
+topper=x.loc[x["total"].idxmax( )]
+print("class topper :")
+print( )
+print(topper)
+print( )
+print("result summary : ")
+print( )
+print( x["result"].value_counts( ))
+print( )
+sorted=x.sort_values("total",ascending=False)
+print("students sorted based on marks :")
+print( )
+print(sorted)
